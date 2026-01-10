@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="/static/css/templates.css">
+</head>
+
+<body class="template minimal theme-{{ data.theme }}">
+
+<h1>{{ data.full_name }}</h1>
+<p>{{ data.email }} | {{ data.phone }} | {{ data.location }}</p>
+
+{% for section in data.section_order %}
+
+{% if section == "summary" and data.summary %}
+<h2>Summary</h2>
+<p>{{ data.summary }}</p>
+{% endif %}
+
+{% if section == "skills" and data.skills %}
+<h2>Skills</h2>
+<p>{{ data.skills | join(", ") }}</p>
+{% endif %}
+
+{% if section == "education" and data.education %}
+<h2>Education</h2>
+{% for e in data.education %}
+<p>
+<strong>{{ e.degree }}</strong>, {{ e.institution }}
+{% if e.year %} ({{ e.year }}){% endif %}
+</p>
+{% endfor %}
+{% endif %}
+
+{% if section == "experience" and data.experience %}
+<h2>Experience</h2>
+{% for e in data.experience %}
+<p>
+<strong>{{ e.role }}</strong>, {{ e.company }}<br>
+{{ e.desc }}
+</p>
+{% endfor %}
+{% endif %}
+
+{% if section == "certificates" and data.certificates %}
+<h2>Certificates</h2>
+<p>{{ data.certificates | join(", ") }}</p>
+{% endif %}
+
+{% endfor %}
+
+</body>
+</html>

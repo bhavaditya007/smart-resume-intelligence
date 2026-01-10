@@ -1,0 +1,27 @@
+body {
+  font-family: "Times New Roman", serif;
+  font-size: 12pt;
+}
+
+.profile-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+h2 {
+  border-bottom: 2px solid;
+}
+
+/* THEMES */
+.theme-blue h2 { color:#2980b9; border-color:#2980b9; }
+.theme-green h2 { color:#27ae60; border-color:#27ae60; }
+.theme-maroon h2 { color:#800000; border-color:#800000; }
+.theme-dark { background:#1e1e1e; color:#f5f5f5; }
+.theme-dark h2 { color:#f39c12; border-color:#f39c12; }
+
+/* PDF */
+@page { margin:20mm; }
+h2, h3 { page-break-after: avoid; }
+p, ul { page-break-inside: avoid; }

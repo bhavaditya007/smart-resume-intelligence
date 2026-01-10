@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="/static/css/templates.css">
+</head>
+
+<body class="template modern theme-{{ data.theme }}">
+
+{% if data.photo_base64 %}
+<img class="profile-photo" src="data:image/jpeg;base64,{{ data.photo_base64 }}">
+{% endif %}
+
+<h1>{{ data.full_name }}</h1>
+<p>{{ data.email }} | {{ data.phone }} | {{ data.location }}</p>
+
+{% for section in data.section_order %}
+
+{% if section == "summary" and data.summary %}
+<h2>Summary</h2>
+<p>{{ data.summary }}</p>
+{% endif %}
+
+{% if section == "skills" and data.skills %}
+<h2>Skills</h2>
+<ul>
+{% for s in data.skills %}
+<li>{{ s }}</li>
+{% endfor %}
+</ul>
+{% endif %}
+
+{% if section == "education" and data.education %}
+<h2>Education</h2>
+{% for e in data.education %}
+<p>
+<strong>{{ e.degree }}</strong><br>
+{{ e.institution }}
+{% if e.year %}| {{ e.year }}{% endif %}
+{% if e.cgpa %}| CGPA: {{ e.cgpa }}{% endif %}
+</p>
+{% endfor %}
+{% endif %}
+
+{% if section == "experience" and data.experience %}
+<h2>Experience</h2>
+{% for e in data.experience %}
+<p>
+<strong>{{ e.role }}</strong> – {{ e.company }}
+{% if e.duration %}| {{ e.duration }}{% endif %}
+<br>
+{{ e.desc }}
+</p>
+{% endfor %}
+{% endif %}
+
+{% if section == "certificates" and data.certificates %}
+<h2>Certificates</h2>
+<ul>
+{% for c in data.certificates %}
+<li>{{ c }}</li>
+{% endfor %}
+</ul>
+{% endif %}
+
+{% endfor %}
+
+</body>
+</html>

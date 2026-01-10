@@ -1,0 +1,6 @@
+Flask>=2.0
+Jinja2>=3.0
+pdfkit>=1.0.0 # optional: enables PDF download (requires wkhtmltopdf installed system-wide)
+Werkzeug>=2.0
+python-dotenv>=1.0
+gunicorn

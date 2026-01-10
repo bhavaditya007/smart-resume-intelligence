@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Preview</title>
+</head>
+<body>
+
+<a href="/">← Back</a>
+
+<h2>Resume Score: {{ score }}/100</h2>
+
+{% if errors %}
+<ul>
+  {% for e in errors %}
+  <li>{{ e }}</li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+<form action="/download/pdf" method="post">
+  <textarea name="resume_html" style="display:none;">{{ resume_html }}</textarea>
+  <button type="submit">Download PDF</button>
+</form>
+
+<hr>
+
+{{ resume_html | safe }}
+
+</body>
+</html>
