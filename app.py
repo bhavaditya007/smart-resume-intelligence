@@ -11,10 +11,14 @@ app.config["MAX_CONTENT_LENGTH"] = 2 * 1024 * 1024
 def index():
     return render_template("index.html")
 
-@app.route("/generate", methods=["POST"])
+@app.route("/generate", methods=["GET", "POST"])
 def generate():
-    raw = request.form.to_dict(flat=False)
-    clean = {k.replace("[]",""):v for k,v in raw.items()}
+    if request.method == "GET":
+        return redirect("/")
+    data = normalize_data(clean_form_data(request))
+    resume_html = render_resume(data)
+    score = score_resume(data)
+    return render_template("preview.html", resume_html=resume_html, score=score)
 
     section_order = {
         "summary": int(request.form.get("order_summary",1)),
