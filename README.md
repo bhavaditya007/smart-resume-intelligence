@@ -41,9 +41,6 @@ The system validates user inputs, dynamically renders resumes, and provides acti
 
 ---
 
-
----
-
 ## ⚙️ How It Works
 
 1. User enters structured resume data through the web interface
